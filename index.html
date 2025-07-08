@@ -1,26 +1,126 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Выбор карт Таро</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css">
-    <style>
-        .card-img { transition: box-shadow 0.2s, border 0.2s; }
-        .selected { box-shadow: 0 0 0 4px #9333ea; border-radius: 8px; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Выбор карт Таро</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #181622;
+      color: #fff;
+      /* Фон будет заменён на картинку через JS */
+      position: relative;
+      overflow-x: hidden;
+    }
+    .overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at 70% 30%, rgba(255,255,255,0.08) 0, transparent 60%),
+                  radial-gradient(circle at 20% 80%, rgba(255,255,255,0.06) 0, transparent 70%);
+    }
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 32px 16px 80px 16px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 32px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #fff;
+      text-shadow: 0 2px 8px #0008;
+    }
+    #cards-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 32px 24px;
+      margin-bottom: 40px;
+      min-height: 220px;
+    }
+    .flex {
+      display: flex;
+    }
+    .flex-col {
+      flex-direction: column;
+    }
+    .items-center {
+      align-items: center;
+    }
+    .cursor-pointer {
+      cursor: pointer;
+    }
+    .card-img {
+      width: 110px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px #0006;
+      background: #222;
+      transition: transform 0.4s, box-shadow 0.2s;
+      backface-visibility: hidden;
+      border: 2px solid transparent;
+    }
+    .card-img.flip {
+      transform: rotateY(180deg) scale(1.05);
+      box-shadow: 0 8px 32px #a259ff88;
+      border-color: #a259ff;
+    }
+    .selected {
+      outline: 3px solid #a259ff;
+      border-radius: 12px;
+      box-shadow: 0 0 0 4px #a259ff44;
+    }
+    .text-sm {
+      font-size: 1rem;
+      margin-top: 8px;
+      color: #fff;
+      text-shadow: 0 1px 4px #000a;
+    }
+    #done-btn {
+      display: block;
+      margin: 0 auto;
+      padding: 16px 0;
+      width: 320px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      background: linear-gradient(90deg, #a259ff 0%, #6a82fb 100%);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 2px 16px #a259ff44;
+      cursor: pointer;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+    #done-btn:disabled {
+      background: #444;
+      color: #bbb;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+    @media (max-width: 600px) {
+      .card-img { width: 80px; height: 130px; }
+      #done-btn { width: 100%; font-size: 1rem; }
+    }
+  </style>
 </head>
-<body class="bg-purple-100 min-h-screen flex flex-col items-center justify-center">
-    <div class="w-full max-w-md mx-auto p-4">
-        <h1 class="text-2xl font-bold text-center mb-4">Выбери 3 карты Таро</h1>
-        <div id="cards-grid" class="grid grid-cols-3 gap-4 mb-6">
-            <!-- Карты будут добавлены JS -->
-        </div>
-        <button id="done-btn" class="w-full py-3 bg-purple-600 text-white font-bold rounded disabled:opacity-50" disabled>
-            Готово
-        </button>
-    </div>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script src="js/main.js"></script>
+<body>
+  <div class="overlay"></div>
+  <div class="container">
+    <h1>Выбери 3 карты Таро</h1>
+    <div id="cards-grid"></div>
+    <button id="done-btn" disabled>Готово</button>
+  </div>
+  <script src="js/main.js"></script>
 </body>
 </html>
