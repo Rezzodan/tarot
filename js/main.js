@@ -79,7 +79,7 @@ const cardsArray = [
   { name: "Туз пентаклей", path: "/cards/Туз_пентаклей/46_pentacles_ace.png" },
   { name: "Умеренность", path: "/cards/Умеренность/20_temperance.png" },
   { name: "Фон", path: "/cards/Фон/Space_wallpaper.png" },
-  { name: "Шут", path: "/cards/Шут/10_the_fool.png" }
+  { name: "Шут", path: "/cards/Шут/10_the_fool.png" },
 ];
 const cardBackImage = "/cards/Обложка/обложка.png";
 const backgroundImage = "/cards/Фон/Space_wallpaper.png";
@@ -110,7 +110,7 @@ function renderCards() {
       <img 
         src="${isRevealed ? card.path : cardBackImage}" 
         alt="${card.name}" 
-        class="card-img w-24 h-36 object-cover mb-2 ${isSelected ? 'selected' : ''} ${isRevealed ? 'flip' : ''}" 
+        class="card-img ${isSelected ? 'selected' : ''} ${isRevealed ? 'flip' : ''}" 
         data-idx="${idx}">
       <span class="text-sm">${isRevealed ? card.name : ''}</span>
     `;
