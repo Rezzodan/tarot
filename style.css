@@ -1,0 +1,111 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  height: 100%;
+  min-height: 100vh;
+  background: #222;
+  color: #fff;
+  overflow-x: hidden;
+}
+.background {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('bg/bg.png') center/cover no-repeat;
+  z-index: 0;
+  filter: blur(8px) brightness(0.7);
+}
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 32px 8px 16px 8px;
+  background: rgba(0,0,0,0.5);
+  border-radius: 16px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.3);
+  margin-top: 32px;
+}
+h1 {
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 1.5em;
+}
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.card {
+  width: 100%;
+  aspect-ratio: 3/5;
+  perspective: 800px;
+  cursor: pointer;
+  position: relative;
+}
+.card-inner {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s cubic-bezier(.4,2,.6,1);
+  transform-style: preserve-3d;
+  position: relative;
+}
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  background: #fff;
+  overflow: hidden;
+}
+.card-face.back {
+  background: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-face img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.card-face.front {
+  transform: rotateY(180deg);
+}
+.card.selected {
+  outline: 3px solid #ffb300;
+  box-shadow: 0 0 16px #ffb30099;
+}
+.send-btn {
+  width: 100%;
+  padding: 14px 0;
+  font-size: 1.1em;
+  background: #ffb300;
+  color: #222;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.send-btn:disabled {
+  background: #888;
+  color: #fff;
+  cursor: not-allowed;
+}
+@media (max-width: 500px) {
+  .container {
+    max-width: 98vw;
+    padding: 12px 2vw 8px 2vw;
+    margin-top: 8px;
+  }
+  .cards-grid {
+    gap: 6px;
+  }
+}
