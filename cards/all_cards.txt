@@ -56,7 +56,6 @@ C:\Users\user\Desktop\Boti\Bot Renata\renata-taro-webapp\cards\Король_пе
 C:\Users\user\Desktop\Boti\Bot Renata\renata-taro-webapp\cards\Луна\16_moon.png
 C:\Users\user\Desktop\Boti\Bot Renata\renata-taro-webapp\cards\Маг\01_magician.png
 C:\Users\user\Desktop\Boti\Bot Renata\renata-taro-webapp\cards\Мир\21_world.png
-C:\Users\user\Desktop\Boti\Bot Renata\renata-taro-webapp\cards\Обложка\обложка.png
 C:\Users\user\Desktop\Boti\Bot Renata\renata-taro-webapp\cards\Отшельник\13_hermit.png
 C:\Users\user\Desktop\Boti\Bot Renata\renata-taro-webapp\cards\Паж_жезлов\77_wands_page.png
 C:\Users\user\Desktop\Boti\Bot Renata\renata-taro-webapp\cards\Паж_кубков\35_cups_page.png
@@ -77,5 +76,4 @@ C:\Users\user\Desktop\Boti\Bot Renata\renata-taro-webapp\cards\Туз_кубко
 C:\Users\user\Desktop\Boti\Bot Renata\renata-taro-webapp\cards\Туз_мечей\60_swords_ace.png
 C:\Users\user\Desktop\Boti\Bot Renata\renata-taro-webapp\cards\Туз_пентаклей\46_pentacles_ace.png
 C:\Users\user\Desktop\Boti\Bot Renata\renata-taro-webapp\cards\Умеренность\20_temperance.png
-C:\Users\user\Desktop\Boti\Bot Renata\renata-taro-webapp\cards\Фон\Space_wallpaper.png
 C:\Users\user\Desktop\Boti\Bot Renata\renata-taro-webapp\cards\Шут\10_the_fool.png
