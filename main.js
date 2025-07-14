@@ -159,13 +159,21 @@ function revealSelected() {
 
 sendBtn.addEventListener('click', () => {
   if (selectedCards.length !== 3) return;
-  // Отправляем данные в Telegram WebApp, если доступно
+
+  // Собираем только пути к картинкам
+  const cardsData = selectedCards.map(c => c.imgPath);
+
+  // Формируем объект для отправки
+  const payload = {
+    selectedCards: cardsData
+  };
+
+  // Отправляем данные в Telegram WebApp
   if (window.Telegram && Telegram.WebApp) {
-    const data = selectedCards.map(c => c.imgPath);
-    Telegram.WebApp.sendData(JSON.stringify(data));
+    Telegram.WebApp.sendData(JSON.stringify(payload));
     Telegram.WebApp.close();
   } else {
-    alert('Выбранные карты: ' + selectedCards.map(c => c.imgPath).join(', '));
+    alert('Выбранные карты: ' + cardsData.join(', '));
   }
 });
 
