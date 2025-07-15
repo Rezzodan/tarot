@@ -154,7 +154,10 @@ function revealSelected() {
 
 function sendDataAndClose() {
   const cardsData = selectedCards.map(c => c.imgPath);
-  const payload = { selectedCards: cardsData };
+  const payload = {
+    action: "cards_selected",
+    cards: cardsData
+  };
   if (window.Telegram && Telegram.WebApp) {
     Telegram.WebApp.sendData(JSON.stringify(payload));
     Telegram.WebApp.close();
