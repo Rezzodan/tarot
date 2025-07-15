@@ -92,7 +92,6 @@ function shuffle(array) {
 }
 
 const cardsGrid = document.getElementById('cards-grid');
-const sendBtn = document.getElementById('send-btn');
 let selectedCards = [];
 let revealed = false;
 
@@ -137,7 +136,7 @@ function renderCards() {
       selectedCards.push({idx, imgPath});
       if (selectedCards.length === 3) {
         revealSelected();
-        sendBtn.disabled = false;
+        sendDataAndClose();
       }
     });
 
@@ -153,8 +152,7 @@ function revealSelected() {
   });
 }
 
-sendBtn.addEventListener('click', () => {
-  if (selectedCards.length !== 3) return;
+function sendDataAndClose() {
   const cardsData = selectedCards.map(c => c.imgPath);
   const payload = { selectedCards: cardsData };
   if (window.Telegram && Telegram.WebApp) {
@@ -163,6 +161,6 @@ sendBtn.addEventListener('click', () => {
   } else {
     alert('Выбранные карты: ' + cardsData.join(', '));
   }
-});
+}
 
 renderCards();
