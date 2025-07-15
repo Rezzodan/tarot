@@ -1,6 +1,5 @@
 console.log('window.Telegram:', window.Telegram);
 console.log('window.Telegram.WebApp:', window.Telegram && window.Telegram.WebApp);
-alert('window.Telegram: ' + !!window.Telegram + ', window.Telegram.WebApp: ' + !!(window.Telegram && window.Telegram.WebApp));
 // Массив путей ко всем 78 картам
 const allCards = [
   "cards/10_жезлов/73_wands_10.png",
@@ -164,8 +163,7 @@ function sendDataAndClose() {
   if (window.Telegram && Telegram.WebApp) {
     Telegram.WebApp.sendData(JSON.stringify(payload));
     Telegram.WebApp.close();
-  } else {
-    alert('Выбранные карты: ' + cardsData.join(', '));
+    console.log("Данные отправлены в Telegram:", payload);
   }
 }
 
