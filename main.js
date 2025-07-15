@@ -1,4 +1,3 @@
-HEAD
 // Массив путей ко всем 78 картам
 const allCards = [
   "cards/10_жезлов/73_wands_10.png",
