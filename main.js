@@ -1,5 +1,6 @@
 console.log('window.Telegram:', window.Telegram);
 console.log('window.Telegram.WebApp:', window.Telegram && window.Telegram.WebApp);
+
 // Массив путей ко всем 78 картам
 const allCards = [
   "cards/10_жезлов/73_wands_10.png",
@@ -96,8 +97,6 @@ function shuffle(array) {
 const cardsGrid = document.getElementById('cards-grid');
 let selectedCards = [];
 let revealed = false;
-
-// 6 случайных карт
 const sixCards = shuffle(allCards).slice(0, 6);
 
 function renderCards() {
@@ -134,11 +133,11 @@ function renderCards() {
       if (revealed) return;
       if (cardDiv.classList.contains('selected')) return;
       if (selectedCards.length >= 3) return;
-      cardDiv.classList.add('selected');
+      cardDiv.classList.add('selected-glow');
       selectedCards.push({idx, imgPath});
       if (selectedCards.length === 3) {
         revealSelected();
-        sendDataAndClose();
+        setTimeout(sendDataAndClose, 800); // Даем время на анимацию flip
       }
     });
 
@@ -150,7 +149,7 @@ function revealSelected() {
   revealed = true;
   selectedCards.forEach(sel => {
     const cardDiv = cardsGrid.children[sel.idx];
-    cardDiv.classList.add('flipped');
+    cardDiv.classList.add('flipped', 'final-glow');
   });
 }
 
@@ -162,8 +161,11 @@ function sendDataAndClose() {
   };
   if (window.Telegram && Telegram.WebApp) {
     Telegram.WebApp.sendData(JSON.stringify(payload));
-    Telegram.WebApp.close();
     console.log("Данные отправлены в Telegram:", payload);
+    Telegram.WebApp.close();
+  } else {
+    console.log("Telegram.WebApp не найден! Payload:", payload);
+    alert("Telegram.WebApp не найден! Проверьте запуск через Telegram.");
   }
 }
 
